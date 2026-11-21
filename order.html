@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru" data-layout="book">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#255377">
+<meta name="print-demo-id" content="union-print">
+<title>Запросить расчёт — Юнион Принт</title>
+<link rel="stylesheet" href="site.css">
+<style>:root{--brand:#255377}</style>
+<script src="site.js" type="module"></script>
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+<header class="masthead"><div class="shell mast-inner">
+<a class="brand" href="index.html"><span aria-hidden="true">Ю</span>Юнион Принт</a>
+<nav class="main-nav" aria-label="Разделы сайта"><a href="index.html">Главная</a><a href="catalog.html">Каталог</a><a href="pricing.html">Цены и расчёт</a><a href="guide.html">Типографиям и издателям</a></nav>
+<a class="button compact nav-cta" href="order.html">Заявка</a>
+<details class="mobile-nav"><summary aria-label="Открыть меню"><i></i><i></i></summary><nav aria-label="Разделы сайта"><a href="index.html">Главная</a><a href="catalog.html">Каталог</a><a href="pricing.html">Цены и расчёт</a><a href="guide.html">Типографиям и издателям</a><a href="order.html">Оставить заявку</a></nav></details>
+</div></header>
+<main id="main"><div class="shell page"><header class="page-title"><h1>Запросить расчёт</h1><p>Добавьте нужные позиции. У каждой могут быть свои параметры и файл.</p></header>
+<form id="order-form" class="order-layout">
+<div class="order-lines"><div id="lines"></div><button class="button secondary" type="button" id="add-line">Добавить позицию</button></div>
+<aside class="order-contact"><h2>Контакт для ответа</h2><label>Имя<input name="customer" autocomplete="name" maxlength="100" required></label>
+<label>Телефон<input name="phone" type="tel" autocomplete="tel" maxlength="30" required></label>
+<label>Комментарий к заявке<textarea name="comment" rows="3" maxlength="1500"></textarea></label>
+<div id="order-total" class="total" aria-live="polite"></div>
+<button class="button" type="submit">Сохранить демо-заявку</button><p class="muted">Заявка и файлы хранятся в этом браузере. Данные в компанию не отправляются.</p>
+<p class="error" id="order-error" role="alert"></p></aside>
+</form><section id="order-done" class="lead-note" hidden><div><h2 id="order-done-title" tabindex="-1"></h2><p>Данные и файлы доступны в демо-CRM в этом же браузере.</p></div>
+<div class="actions"><a class="button" href="crm.html">Открыть демо-CRM</a><button class="button secondary" id="start-again" type="button">Новая заявка</button></div></section>
+<noscript>Для подготовки заявки включите JavaScript.</noscript></div></main>
+<footer class="footer"><div class="shell footer-inner"><div><strong>Юнион Принт</strong><p>Нижний Новгород · Типография</p></div><nav aria-label="Полезные ссылки"><a href="catalog.html" class="">Каталог</a><a href="pricing.html" class="">Цены и расчёт</a><a href="guide.html" class="">Типографиям и издателям</a><a href="order.html" class="">Оставить заявку</a></nav>
+<div class="footer-source"><a href="https://upnn.ru/" class="" target="_blank" rel="noopener noreferrer">Действующий сайт</a><small>Концепт сайта · ClientSpace</small></div></div></footer>
+</body></html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#243890">
+  <title>CRM — Юнион Принт</title>
+  <link rel="preload" href="assets/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="crm.css">
+  <script type="module" src="crm.js"></script>
+<style>:root{--brand:#255377}</style></head>
+<body class="crm-page">
+  <a class="skip" href="#crm-main">Перейти к заявкам</a>
+  <div class="crm-shell">
+    <aside class="crm-sidebar">
+      <a class="crm-brand" href="index.html" aria-label="Сайт компании Юнион Принт">
+        <span class="crm-brand-name">Юнион Принт</span><span class="crm-brand-caption">CRM</span>
+      </a>
+      <div class="crm-stage-heading">Этапы заказа</div>
+      <nav class="crm-stages" id="crm-stages" aria-label="Фильтр по этапу"></nav>
+      <div class="crm-sidebar-bottom">
+        <div class="crm-ink" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </aside>
+    <div class="crm-body">
+      <header class="crm-topbar">
+        <span class="crm-demo-label">Демо-CRM</span>
+        <a class="crm-site-link" href="index.html">Демо-сайт</a>
+      </header>
+      <main id="crm-main" class="crm-main">
+        <div class="crm-heading">
+          <h1>Заказы<span>.</span></h1>
+          <a class="crm-new-order button button-bright" href="order.html" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            Демо-заявка
+          </a>
+        </div>
+        <section class="crm-metrics" aria-label="Сводка по заказам" id="crm-metrics"></section>
+        <section class="crm-queue" aria-labelledby="crm-queue-title">
+          <div class="crm-queue-header">
+            <div class="crm-queue-title">
+              <h2 id="crm-queue-title">Все заказы</h2>
+              <span id="crm-result" aria-live="polite"></span>
+            </div>
+            <div class="crm-tools">
+              <label class="crm-search">
+                <span class="visually-hidden">Поиск заказов</span>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 4 4"/></svg>
+                <input type="search" id="crm-search" placeholder="Номер, клиент, товар" autocomplete="off">
+              </label>
+              <label class="crm-source-filter"><input type="checkbox" id="crm-website-only"> Только с сайта</label>
+            </div>
+          </div>
+          <table class="crm-table" id="crm-table" hidden>
+            <thead>
+              <tr><th scope="col">Заказ</th><th scope="col">Клиент</th><th scope="col">Позиции</th><th scope="col">Сумма</th><th scope="col">Статус</th></tr>
+            </thead>
+            <tbody id="crm-rows"></tbody>
+          </table>
+          <p class="crm-empty" id="crm-empty" role="status">Загружаем заказы…</p>
+          <noscript><p class="crm-empty">Для локального кабинета нужен JavaScript.</p></noscript>
+        </section>
+        <p class="crm-local-note">Заказы и изменения хранятся в этом браузере. Учебные заказы помечены «Пример».</p>
+      </main>
+    </div>
+  </div>
+
+  <dialog class="crm-drawer" id="crm-drawer" aria-labelledby="crm-order-title">
+    <div class="crm-drawer-header">
+      <div>
+        <div class="crm-drawer-meta" id="crm-order-meta"></div>
+        <h2 id="crm-order-title">Заказ</h2>
+      </div>
+      <button class="crm-close" type="button" aria-label="Закрыть карточку">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="crm-drawer-body">
+      <section class="crm-detail-section" aria-labelledby="crm-contact-title">
+        <h3 id="crm-contact-title">Клиент</h3>
+        <div class="crm-detail-contact" id="crm-order-contact"></div>
+        <p id="crm-client-notes" class="crm-client-notes" hidden></p>
+      </section>
+      <section class="crm-detail-section" aria-labelledby="crm-items-title">
+        <h3 id="crm-items-title">Позиции заказа</h3>
+        <div class="crm-detail-items" id="crm-order-items"></div>
+        <div class="crm-estimate" id="crm-order-estimate"></div>
+      </section>
+      <form class="crm-detail-section crm-edit" id="crm-edit">
+        <h3>Работа с заказом</h3>
+        <div class="crm-edit-fields">
+          <div class="crm-field">
+            <label for="crm-order-status">Статус</label>
+            <select name="status" id="crm-order-status"></select>
+          </div>
+          <label>Согласованная сумма, ₽
+            <input name="finalAmount" id="crm-final-amount" type="number" min="0" max="1000000000" step="0.01" inputmode="decimal" placeholder="Пока без суммы">
+          </label>
+        </div>
+        <label>Заметка менеджера
+          <textarea name="note" rows="3" maxlength="1200" placeholder="Например, согласовали материал и срок"></textarea>
+        </label>
+        <div class="crm-edit-actions">
+          <button type="submit" class="button button-bright">Сохранить</button>
+          <p role="status" id="crm-save-status"></p>
+        </div>
+      </form>
+      <section class="crm-detail-section" aria-labelledby="crm-history-title">
+        <h3 id="crm-history-title">История</h3>
+        <ol class="crm-history" id="crm-history"></ol>
+      </section>
+    </div>
+  </dialog>
+</body>
+</html>
