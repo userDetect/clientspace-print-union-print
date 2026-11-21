@@ -207,3 +207,22 @@ input:focus,select:focus,textarea:focus{border-color:var(--brand)}
 .quick-estimate p{align-self:center}
 @media(max-width:780px){.quick-estimate{grid-template-columns:minmax(0,1fr) minmax(95px,.48fr)}}
 @media(max-width:380px){.quick-estimate{grid-template-columns:minmax(0,1fr)}}
+.message-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.message-actions p:empty{display:none}
+.guide-card,.guide-card>* ,.price-choice,.price-choice>* ,.fact-grid>div{min-width:0;overflow-wrap:anywhere}
+.hero-media.proofs{background:color-mix(in srgb,var(--brand) 14%,var(--white));display:grid;place-items:center;overflow:hidden}
+.hero-media.proofs::before{content:"";position:absolute;inset:5%;border:1px solid color-mix(in srgb,var(--brand) 40%,transparent);background:repeating-linear-gradient(90deg,#fff0 0 25px,#fff5 26px 27px)}
+.hero-media.proofs img{position:relative;grid-area:1/1;inset:auto;width:36%;height:auto;max-width:210px;aspect-ratio:1;object-fit:cover;border:9px solid var(--white);box-shadow:0 9px 25px #1a162840;border-radius:3px}
+.hero-media.proofs img:nth-child(1){transform:translate(-64%,12%) rotate(-10deg)}
+.hero-media.proofs img:nth-child(2){transform:translate(58%,-18%) rotate(10deg)}
+.hero-media.proofs img:nth-child(3){transform:translate(-1%,27%) rotate(-2deg)}
+.hero-media.proofs figcaption{color:var(--ink);background:transparent}
+[data-layout=book] .hero{background:color-mix(in srgb,var(--brand) 8%,var(--paper));color:var(--ink)}
+[data-layout=book] .hero .eyebrow,[data-layout=studio] .hero .eyebrow{color:var(--brand)}
+[data-layout=book] .hero-lead,[data-layout=studio] .hero-lead{color:var(--muted)}
+[data-layout=book] .hero .button,[data-layout=studio] .hero .button{background:var(--brand);color:white}
+[data-layout=book] .hero .button.secondary,[data-layout=studio] .hero .button.secondary{background:transparent;color:var(--ink);border-color:var(--brand)}
+[data-layout=book] .hero-media:not(.proofs){box-shadow:0 16px 35px #241a2424}
+[data-layout=studio] .hero{color:var(--ink);background:linear-gradient(var(--paper) 70%,var(--wash) 70%)}
+[data-layout=tech] .hero{background-color:var(--bg-dark);background-image:linear-gradient(#ffffff10 1px,transparent 1px),linear-gradient(90deg,#ffffff10 1px,transparent 1px);background-size:44px 44px}
+[data-layout=sign] .hero-media{outline:1px solid #ffffff3b;outline-offset:7px}

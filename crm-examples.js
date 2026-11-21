@@ -3,7 +3,7 @@ import { business } from './business.js';
 const statuses = ['new','review','production','ready'];
 const now = Date.now();
 const names = ['Демо-клиент', 'Пример заказа', 'Учебная заявка', 'Демо-заявка'];
-export const demoPrintRequests = statuses.map((status,index) => {
+export const demoPrintRequests = () => statuses.map((status,index) => {
   const product = business.products[index % business.products.length];
   const at = new Date(now - Math.max(index,1)*86400000).toISOString();
   return {

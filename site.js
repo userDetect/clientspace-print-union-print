@@ -98,6 +98,20 @@ if (form) {
   const error = document.querySelector('#order-error');
   const done = document.querySelector('#order-done');
   let pending = false;
+  let savedBrief = '';
+  const copyBrief = document.querySelector('#copy-brief');
+  copyBrief?.addEventListener('click', async () => {
+    const status = document.querySelector('#copy-status');
+    try {
+      await navigator.clipboard.writeText(savedBrief);
+      status.textContent = 'Текст скопирован.';
+    } catch {
+      const text = node('textarea', '', savedBrief);
+      text.readOnly = true;
+      status.replaceChildren(text);
+      text.select();
+    }
+  });
 
   function labelled(label, control, className) {
     const wrapper = node('label', className);
@@ -298,11 +312,17 @@ if (form) {
     const submit = form.querySelector('[type="submit"]');
     submit.disabled = true;
     try {
+      const items = [...lines.children].map(card => entries.get(card).record());
       const id = await savePrintRequest({
-        contact:{name,phone}, items:[...lines.children].map(card => entries.get(card).record()),
+        contact:{name,phone}, items,
         notes:form.elements.comment.value.trim(), status:'new', totals:updateTotal(),
         createdAt:new Date().toISOString(),
       });
+      if (copyBrief) {
+        const details = items.map(item => [item.product,...item.specs.map(spec => spec.label+' — '+spec.value)].join('\n'));
+        savedBrief = ['Добрый день! Подскажите стоимость заказа.',...details,form.elements.comment.value.trim()]
+          .filter(Boolean).join('\n\n');
+      }
       form.hidden = true;
       done.hidden = false;
       const title = document.querySelector('#order-done-title');
