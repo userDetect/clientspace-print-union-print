@@ -203,3 +203,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--brand)}
 .crm-item-specs{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:4px 10px;margin:0;font-size:.87rem}
 .crm-item-specs dt{color:var(--crm-muted)}
 .crm-item-specs dd{margin:0;overflow-wrap:anywhere}
+.quick-estimate{margin-top:12px;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(100px,.38fr) minmax(0,1fr) max-content;gap:12px;align-items:end;padding:16px 18px;border:1px solid var(--line);border-radius:8px;background:var(--white)}
+.quick-estimate p{align-self:center}
+@media(max-width:780px){.quick-estimate{grid-template-columns:minmax(0,1fr) minmax(95px,.48fr)}}
+@media(max-width:380px){.quick-estimate{grid-template-columns:minmax(0,1fr)}}

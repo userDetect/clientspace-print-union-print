@@ -72,6 +72,24 @@ if (rateSearch) {
   filterRates();
 }
 
+const quick = document.querySelector('#quick-estimate');
+if (quick) {
+  const {tariff,quantity,product} = quick.elements;
+  const result = document.querySelector('#quick-total');
+  function updateQuick(resetQuantity) {
+    const rate = rateById.get(tariff.value);
+    product.value = rate?.product ?? '';
+    if (resetQuantity && rate) quantity.value = String(rate.quantity ?? 1);
+    const count = quantity.valueAsNumber;
+    const amount = rate?.mode === 'unit' && Number.isInteger(count) && count > 0 ? rate.amount * count :
+      rate?.mode === 'batch' && count === rate.quantity ? rate.amount : null;
+    result.textContent = amount === null ? 'Стоимость уточнит менеджер.' : 'Предварительно ' + money.format(amount);
+  }
+  tariff.addEventListener('change',() => updateQuick(true));
+  quantity.addEventListener('input',() => updateQuick(false));
+  updateQuick(false);
+}
+
 const form = document.querySelector('#order-form');
 if (form) {
   const lines = document.querySelector('#lines');
@@ -126,7 +144,7 @@ if (form) {
 
   const entries = new WeakMap();
 
-  function makeLine(initialProduct = '', initialTariff = '') {
+  function makeLine(initialProduct = '', initialTariff = '', initialQuantity = '') {
     const card = node('section', 'line-item');
     const top = node('div', 'line-head');
     const caption = node('h2', 'line-title');
@@ -238,6 +256,7 @@ if (form) {
     entries.set(card,{record, get amount(){ return amount; }, get selected(){return Boolean(activeProduct);}});
     lines.append(card);
     if (productById.has(initialProduct)) product.value = initialProduct;
+    if (quantity && /^\d{1,10}$/.test(initialQuantity) && Number(initialQuantity) <= 1000000000) quantity.value = initialQuantity;
     updateRates(initialTariff);
     changeOrdinals();
     return product;
@@ -262,7 +281,7 @@ if (form) {
     lines.replaceChildren();
     makeLine().focus();
   });
-  makeLine(params.get('product') ?? '',params.get('tariff') ?? '');
+  makeLine(params.get('product') ?? '',params.get('tariff') ?? '',params.get('quantity') ?? '');
 
   form.addEventListener('submit', async event => {
     event.preventDefault();
