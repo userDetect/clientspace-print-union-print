@@ -58,7 +58,6 @@ button:disabled{cursor:not-allowed;opacity:.65}
 .registration-marker{position:absolute;right:22px;bottom:20px;width:22px;aspect-ratio:1;border:1px solid var(--brand);background:linear-gradient(90deg,transparent 48%,var(--brand) 48% 54%,transparent 54%),linear-gradient(transparent 48%,var(--brand) 48% 54%,transparent 54%);border-radius:50%;opacity:.55}
 [data-layout=sign]{--paper:#eff0ed;--white:#fafbf8;--ink:#1b2222;--line:#d4dad6}
 [data-layout=sign] .hero-inner{grid-template-columns:minmax(0,1fr) minmax(0,1.13fr)}
-[data-layout=sign] .hero{background:#141c21}
 [data-layout=sign] .hero-media{aspect-ratio:1.07}
 [data-layout=sign] .illustration{background:radial-gradient(ellipse at center,color-mix(in srgb,var(--brand) 48%,#253047),#101723)}
 [data-layout=sign] .ink-stack{width:71%;height:50%;transform:rotate(-4deg)}
@@ -217,12 +216,5 @@ input:focus,select:focus,textarea:focus{border-color:var(--brand)}
 .hero-media.proofs img:nth-child(2){transform:translate(58%,-18%) rotate(10deg)}
 .hero-media.proofs img:nth-child(3){transform:translate(-1%,27%) rotate(-2deg)}
 .hero-media.proofs figcaption{color:var(--ink);background:transparent}
-[data-layout=book] .hero{background:color-mix(in srgb,var(--brand) 8%,var(--paper));color:var(--ink)}
-[data-layout=book] .hero .eyebrow,[data-layout=studio] .hero .eyebrow{color:var(--brand)}
-[data-layout=book] .hero-lead,[data-layout=studio] .hero-lead{color:var(--muted)}
-[data-layout=book] .hero .button,[data-layout=studio] .hero .button{background:var(--brand);color:white}
-[data-layout=book] .hero .button.secondary,[data-layout=studio] .hero .button.secondary{background:transparent;color:var(--ink);border-color:var(--brand)}
 [data-layout=book] .hero-media:not(.proofs){box-shadow:0 16px 35px #241a2424}
-[data-layout=studio] .hero{color:var(--ink);background:linear-gradient(var(--paper) 70%,var(--wash) 70%)}
-[data-layout=tech] .hero{background-color:var(--bg-dark);background-image:linear-gradient(#ffffff10 1px,transparent 1px),linear-gradient(90deg,#ffffff10 1px,transparent 1px);background-size:44px 44px}
 [data-layout=sign] .hero-media{outline:1px solid #ffffff3b;outline-offset:7px}
